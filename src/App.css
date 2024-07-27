@@ -12,11 +12,12 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-body{
+
+body {
   font-family: 'inter var';
   overflow-x: hidden;
-  background-color: #DBDBDB;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,7 +37,16 @@ body{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -10;
 }

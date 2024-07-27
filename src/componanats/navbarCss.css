@@ -1,9 +1,38 @@
-.icon{
+.icon {
     transition: all .3s ease;
 }
-.icon:hover{
+
+.icon:hover {
     fill: #718096;
 }
-.icon:nth-of-type(2):hover{
-    transform: rotate(240deg);
+
+.icon:nth-of-type(2):hover {
+    transform: rotate(20deg);
+}
+
+@media screen and (max-width:600px) {
+    header {
+        margin: 0px !important;
+        padding: 10px !important;
+    }
+}
+
+.father {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.right,
+.left {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+
+}
+
+.selection {
+    position: relative;
+}
+
+select {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
