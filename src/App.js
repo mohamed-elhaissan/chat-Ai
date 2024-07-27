@@ -1,8 +1,11 @@
-
-import './App.css';
-
+import "./App.css";
+import Main  from "./componanats/navbar";
 function App() {
-  return <h1 className='font-jakarta'>Test</h1>
+  return (
+    <div>
+      <Main />
+    </div>
+  )
 }
 
 export default App;

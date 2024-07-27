@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js,jsx}"],
 
   theme: {
     extend: {
       fontFamily :{
-        'poppins' : ['Poppins', 'sans-serif'],
+        'sans' : ['inter var', 'sans-serif'],
         'jakarta' : ['Plus Jakarta Sans', 'sans-serif'],
       },
       colors:{
