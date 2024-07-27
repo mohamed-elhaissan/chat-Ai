@@ -1,0 +1,9 @@
+.icon{
+    transition: all .3s ease;
+}
+.icon:hover{
+    fill: #718096;
+}
+.icon:nth-of-type(2):hover{
+    transform: rotate(240deg);
+}

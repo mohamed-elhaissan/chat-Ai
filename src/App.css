@@ -15,6 +15,7 @@
 body{
   font-family: 'inter var';
   overflow-x: hidden;
+  background-color: #DBDBDB;
 }
 .App-header {
   background-color: #282c34;
