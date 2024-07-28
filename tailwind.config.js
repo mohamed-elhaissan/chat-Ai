@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily :{
-        'inter' : ['inter var', 'sans-serif'],
+        'sans' : ['Inter', 'sans-serif'],
         'jakarta' : ['Plus Jakarta Sans', 'sans-serif'],
       },
       colors:{
