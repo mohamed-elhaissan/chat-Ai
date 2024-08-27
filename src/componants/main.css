@@ -1,0 +1,25 @@
+
+span ion-icon {
+    position: relative;
+    transition: all .2s cubic-bezier(0.76,0,0.24,1);
+    padding: 10px;
+}
+span ion-icon::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color:   #F8FAFC ;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    top: 0;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all .2s cubic-bezier(0.76,0,0.24,1);
+}
+span ion-icon:hover {
+    color: #4F46E5;
+}
+ion-icon:hover::before {
+    transform:  scale(1);
+}
