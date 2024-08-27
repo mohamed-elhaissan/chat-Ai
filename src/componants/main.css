@@ -1,12 +1,12 @@
 
-span ion-icon {
+ion-icon:not(ion-icon[name="send-outline"]) {
     position: relative;
     transition: all .2s cubic-bezier(0.76,0,0.24,1);
-    padding: 10px;
+    padding: 7px;
     border-radius: 50%;
-    box-shadow: 0px 10px 10px rgba(0,0,0,.1);
+    border: .5px solid #4755696e;
 }
-span ion-icon::before {
+ion-icon:not(ion-icon[name="send-outline"])::before {
     content: '';
     width: 100%;
     height: 100%;
@@ -19,9 +19,9 @@ span ion-icon::before {
     transform: scale(0);
     transition: all .2s cubic-bezier(0.76,0,0.24,1);
 }
-span ion-icon:hover {
+ion-icon:not(ion-icon[name="send-outline"]):hover {
     color: #4F46E5;
 }
-ion-icon:hover::before {
+ion-icon:not(ion-icon[name="send-outline"]):hover::before {
     transform:  scale(1);
 }
