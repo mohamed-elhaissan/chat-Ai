@@ -11,9 +11,9 @@ export default {
         'primary' : '#4F46E5',
           'backgroundColor' : '#F8FAFC'
       },
-      transition: {
-        'mytransition': 'all 2s cubic-bezier(0.16, 1, 0.3, 1)',
-      },
+      transitionTimingFunction: {
+        'in-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+      }
     },
   },
   plugins: [],

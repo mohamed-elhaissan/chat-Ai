@@ -1,0 +1,9 @@
+.parentDiv{
+    .child{
+        background: #000;
+        transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    &:hover .child {
+        background: #fff;
+    }
+}
