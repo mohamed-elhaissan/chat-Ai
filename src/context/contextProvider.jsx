@@ -1,12 +1,17 @@
+import run from "../config/geminApi";
 import {  createContext, useState } from "react";
+export const ContextAPI = createContext();
 
-export const context = createContext();
 
+const ContextProvider = (props) => {
+  
 const [iaAnswers, setiaAnswer] = useState([]);
+const [inputfield,setInputfield] = useState('')
 const [humanQuestion, setHumanQuestion] = useState([]);
 const [previosFiled, setPreviosField] = useState([]);
-
-
+const  genrateAnswer = async ()=>{
+  await run(inputfield)
+}
 
 const contextImporting = {
   iaAnswers,
@@ -15,12 +20,16 @@ const contextImporting = {
   setHumanQuestion,
   previosFiled,
   setPreviosField,  
+  genrateAnswer,
+  inputfield,
+  setInputfield
 };
-const ContextProvider = (props) => {
+
+
   return (
-    <context.Provider value={contextImporting}>
-        {props.Children}
-        </context.Provider>
+    <ContextAPI.Provider value={contextImporting}>
+        {props.children}
+        </ContextAPI.Provider>
   );
 };
 export default ContextProvider; 
