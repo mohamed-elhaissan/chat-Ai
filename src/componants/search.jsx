@@ -2,14 +2,19 @@ import "./style.scss";
 import {IoIosMic} from "react-icons/io";
 import {IoHappyOutline} from "react-icons/io5";
 import { IoMdSend } from "react-icons/io";
+import { useRef } from "react";
 
 
 export default function Search() {
+    const input = useRef(null);
+
+    
+   
     return (
         <>
             <div
                 className="searchBox fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-between w-1/2 rounded-lg  bg-white px-5 py-2  ">
-                <input
+                <input ref={input}
                     type="text"
                     className="w-full bg-transparent outline-none border-none "
                     placeholder="Message to Med-Gpt..."
