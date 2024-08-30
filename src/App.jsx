@@ -5,9 +5,9 @@ import SectionBot from "./componants/SectionBot.jsx";
 function App() {
   return (
     <>
-     <Header/>
-     <Search/>
-      <SectionBot/>
+        <Header />
+        <Search />
+        <SectionBot />
     </>
   );
 }

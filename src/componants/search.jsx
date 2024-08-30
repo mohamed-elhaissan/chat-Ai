@@ -7,9 +7,12 @@ import { ContextAPI } from "../context/contextProvider";
 
 
 export default function Search() {
-    const {inputfield,setInputfield,genrateAnswer} = useContext(ContextAPI)
+    const {setInputfield,genrateAnswer} = useContext(ContextAPI)
     const input = useRef(null);
-
+    const handleinput = () => {
+        genrateAnswer()
+        input.current.value = ''
+    }
    
     return (
         <>
@@ -23,7 +26,7 @@ export default function Search() {
                 <div className="w-1/4 flex items-center justify-center gap-1">
                     <IoIosMic className='rounded-full  text-3xl cursor-pointer  ' />
                     <IoHappyOutline className='rounded-full  text-3xl cursor-pointer '/>
-                    <button className="flex items-center gap-1 bg-primary text-white text-sm py-3 px-5 rounded-lg ]  hover:opacity-85" onClick={()=>genrateAnswer()}>
+                    <button className="flex items-center gap-1 bg-primary text-white text-sm py-3 px-5 rounded-lg ]  hover:opacity-85" onClick={handleinput}>
                         Send <IoMdSend/>
                     </button>
                 </div>

@@ -10,7 +10,11 @@ const [inputfield,setInputfield] = useState('')
 const [humanQuestion, setHumanQuestion] = useState([]);
 const [previosFiled, setPreviosField] = useState([]);
 const  genrateAnswer = async ()=>{
-  await run(inputfield)
+  
+  setHumanQuestion([...humanQuestion,inputfield])
+  let respone = await run(inputfield)
+  let previesanswore = iaAnswers
+  setiaAnswer([...previesanswore,respone]);
 }
 
 const contextImporting = {

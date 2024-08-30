@@ -24,7 +24,7 @@ async function run(useInput) {
   });
 
   const result = await chatSession.sendMessage(useInput);
-  console.log(result.response.text());
+  return result.response.text();
 }
 
 export default run;
