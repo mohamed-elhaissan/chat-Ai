@@ -14,13 +14,3 @@
     position: relative;
     animation: answer .2s ease;
 }
-@keyframes answer {
-    0% {
-        top: -10px;
-        opacity: 0;
-    }
-    100% {
-        top:0px;
-        opacity: 1;
-    }
-}
