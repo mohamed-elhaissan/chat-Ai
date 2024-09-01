@@ -10,15 +10,17 @@
 .searchBox,.gptrespone {
     box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
 }
-
-.loading {
-    animation: loadingDiv 1s ease infinite;
+.loading{
+    animation: spanAnimate 1s ease infinite;
 }
-@keyframes loadingDiv {
+@keyframes spanAnimate {
     0% {
-        transform: rotate(0deg);
+        filter: blur(0px);
+    }
+    50% {
+        filter: blur(10px);
     }
     100% {
-        transform: rotate(360deg);
+        filter: blur(0px);
     }
 }
