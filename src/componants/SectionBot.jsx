@@ -31,6 +31,7 @@ export default function SectionBot() {
           <h2 className="text-5xl font-bold ">Ask Med-GPT AI Anything</h2>
           <img src={`${under}`} alt="" className="relative left-1/2 -translate-x-1/2 -mt-4"/>
           <p>Trusted by Millions of Users & Fortune 500 Companies</p>
+      
         </div>
       ) : (
         iaAnswers.map((response, index) => (
