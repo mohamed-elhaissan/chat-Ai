@@ -9,9 +9,10 @@ import gsap from "gsap-trial";
 export default function Header() {
   const [showAPI, setShowAPI] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
- 
+  const inputFocus = useRef()
   const apifield = useRef()
   useEffect(()=>{
+    inputFocus.current.focus()
     gsap.set(apifield.current,{
       opacity:0,
       scale:0
@@ -75,9 +76,9 @@ export default function Header() {
           Enter your OpenAI API Key
         </h2>
         <div>
-          <input 
+          <input ref={inputFocus}
             type="text"
-            className="bg-[#F4F7FE] rounded-lg mx-2   px-4 py-2 outline-none"
+            className="bg-[#F4F7FE] rounded-lg mx-2 w-80 focus:outline-green-500  px-4 py-2 outline-none"
             style={{
               border : showAlert ? '1px solid red' : 'none'
             }}

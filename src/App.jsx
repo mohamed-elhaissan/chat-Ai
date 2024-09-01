@@ -8,7 +8,7 @@ import Loading from "./componants/loading/loading.jsx";
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(true);
+    setLoading(false);
   }, []);
   return (
     <>
