@@ -11,7 +11,7 @@ export default function SectionBot() {
   const hour = newDate.getHours();
   const minutes = newDate.getMinutes();
   const lastmessage = useRef(null);
-  const { iaAnswers, humanQuestion } = useContext(ContextAPI);
+  const { allChat } = useContext(ContextAPI);
 
   gsap.set(lastmessage.current, { x: -100, opacity: 0, ease: "back" });
   useEffect(() => {
@@ -23,10 +23,10 @@ export default function SectionBot() {
     } else {
       console.log("notdoneuet");
     }
-  }, [iaAnswers]);
+  }, [allChat]);
   return (
     <div>
-      {iaAnswers.length === 0 ? (
+      {allChat.length === 0 ? (
         <div className="welocome text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h2 className="text-5xl font-bold ">Ask Med-GPT AI Anything</h2>
           <img src={`${under}`} alt="" className="relative left-1/2 -translate-x-1/2 -mt-4"/>
@@ -34,16 +34,17 @@ export default function SectionBot() {
       
         </div>
       ) : (
-        iaAnswers.map((response, index) => (
+        allChat.map((response, index) => (
+          
           <div
-            className="chat flex flex-col justify-start gap-2 items-start mx-52"
-            key={response.id} // Use a unique identifier as the key
+            className="chat flex flex-col justify-start gap-2 items-start mt-20 mx-52"
+            key={index} // Use a unique identifier as the key
           >
             <div className="persongpt self-end">
-              <div className="flex items-center flex-row-reverse justify-center gap-2 border-solid border-gray-100 border-2">
+              <div className="flex items-center flex-row-reverse justify-center gap-2 border-solid">
                 <FaUserAlt className="bg-gray-500 rounded-full p-2 text-4xl" />
                 <div className="gptrespone bg-[#4F46E5] p-3 rounded-lg text-gray-200 flex gap-2">
-                  <p>{humanQuestion[index]}</p>
+                  <p>{response}</p>
                   <span className="flex items-center text-[12px] text-white">
                     <p>{`${hour}:${minutes}`}</p>
                     <IoCheckmarkDoneOutline className="text-[15px] text-green-400" />
@@ -55,7 +56,7 @@ export default function SectionBot() {
               className="gptchat self-start"
               ref={lastmessage} // Set the ref for all messages
             >
-              <div className="flex items-center mt-12 justify-center gap-2 border-solid border-gray-100 border-2">
+              <div className="flex items-center mt-12 justify-center gap-2 border-solid">
                 <img src={`${chat}`} alt="" />
                 <div className="gptrespone bg-white p-3 rounded-lg flex gap-2">
                   <p>{response}</p>

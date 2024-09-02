@@ -1,42 +1,36 @@
 import run from "../config/geminApi";
-import {  createContext, useState } from "react";
+import { createContext, useState } from "react";
 export const ContextAPI = createContext();
 
-
 const ContextProvider = (props) => {
-  
-const [iaAnswers, setiaAnswer] = useState([]);
-const [inputfield,setInputfield] = useState('')
-const [humanQuestion, setHumanQuestion] = useState([]);
-const [previosFiled, setPreviosField] = useState([]);
-const  genrateAnswer = async ()=>{
-  setHumanQuestion([...humanQuestion,inputfield])
- 
+  const [iaAnswers, setiaAnswer] = useState([]);
+  const [allChat,setallChat] = useState([])
+  const [inputfield, setInputfield] = useState("");
+  const [humanQuestion, setHumanQuestion] = useState([]);
+  const [previosFiled, setPreviosField] = useState([]);
+  const genrateAnswer = async () => {
+    setallChat([...allChat,inputfield])
+    let respone = await run(inputfield);
+    setallChat([...allChat,respone])
+  };
 
-  let respone = await run(inputfield)
-
-
-  let previesanswore = iaAnswers
-  setiaAnswer([...previesanswore,respone]);
-}
-
-const contextImporting = {
-  iaAnswers,
-  setiaAnswer,
-  humanQuestion,
-  setHumanQuestion,
-  previosFiled,
-  setPreviosField,  
-  genrateAnswer,
-  inputfield,
-  setInputfield
-};
-
+  const contextImporting = {
+    iaAnswers,
+    setiaAnswer,
+    humanQuestion,
+    setHumanQuestion,
+    previosFiled,
+    setPreviosField,
+    genrateAnswer,
+    inputfield,
+    setInputfield,
+    allChat
+  };
 
   return (
     <ContextAPI.Provider value={contextImporting}>
-        {props.children}
-        </ContextAPI.Provider>
+      {props.children}
+    </ContextAPI.Provider>
   );
 };
-export default ContextProvider; 
+export default ContextProvider;
