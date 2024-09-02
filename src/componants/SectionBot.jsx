@@ -1,8 +1,7 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import chat from "../assets/chat.svg";
 import { ContextAPI } from "../context/contextProvider";
 import { FaUserAlt } from "react-icons/fa";
-import gsap from "gsap";
 import "./style.scss";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import under from '../assets/under.svg'
@@ -11,7 +10,7 @@ export default function SectionBot() {
   const hour = newDate.getHours();
   const minutes = newDate.getMinutes();
   const lastmessage = useRef(null);
-  const { iaAnswers, humanQuestion } = useContext(ContextAPI);
+  const { iaAnswers, humanQuestion ,loading} = useContext(ContextAPI);
   return (
     <div>
       {iaAnswers.length === 0 ? (
@@ -46,7 +45,13 @@ export default function SectionBot() {
               <div className="flex items-center mt-12 justify-center gap-2 border-solid">
                 <img src={`${chat}`} alt="" />
                 <div className="gptrespone bg-white p-3 rounded-lg flex gap-2">
-                  <p>{response}</p>
+                 {
+                  loading ? (
+                    <p>loading here</p>
+                  ) : (
+                    <p>{response}</p>
+                  )
+                 }
                   <span className="flex items-center text-[12px] text-gray-500">
                     <p>{`${hour}:${minutes}`}</p>
                     <IoCheckmarkDoneOutline className="text-[15px] text-green-400" />

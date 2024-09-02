@@ -6,26 +6,24 @@ const ContextProvider = (props) => {
   const [iaAnswers, setiaAnswer] = useState([]);
   const [inputfield, setInputfield] = useState("");
   const [humanQuestion, setHumanQuestion] = useState([]);
-  const [previosFiled, setPreviosField] = useState([]);
+  const [loading,setLoading] = useState(false)
   const genrateAnswer = async () => {
+    setLoading(true)
     setHumanQuestion([...humanQuestion, inputfield]);
 
     let respone = await run(inputfield);
 
     let previesanswore = iaAnswers;
     setiaAnswer([...previesanswore, respone]);
+    setLoading(false)
   };
 
   const contextImporting = {
     iaAnswers,
-    setiaAnswer,
     humanQuestion,
-    setHumanQuestion,
-    previosFiled,
-    setPreviosField,
     genrateAnswer,
-    inputfield,
     setInputfield,
+    loading
   };
 
   return (
