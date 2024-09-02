@@ -4,14 +4,16 @@ export const ContextAPI = createContext();
 
 const ContextProvider = (props) => {
   const [iaAnswers, setiaAnswer] = useState([]);
-  const [allChat,setallChat] = useState([])
   const [inputfield, setInputfield] = useState("");
   const [humanQuestion, setHumanQuestion] = useState([]);
   const [previosFiled, setPreviosField] = useState([]);
   const genrateAnswer = async () => {
-    setallChat([...allChat,inputfield])
+    setHumanQuestion([...humanQuestion, inputfield]);
+
     let respone = await run(inputfield);
-    setallChat([...allChat,respone])
+
+    let previesanswore = iaAnswers;
+    setiaAnswer([...previesanswore, respone]);
   };
 
   const contextImporting = {
@@ -24,7 +26,6 @@ const ContextProvider = (props) => {
     genrateAnswer,
     inputfield,
     setInputfield,
-    allChat
   };
 
   return (
