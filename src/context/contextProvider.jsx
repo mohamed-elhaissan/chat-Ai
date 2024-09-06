@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const ContextAPI = createContext();
 
 const ContextProvider = (props) => {
-  const [iaAnswers, setiaAnswer] = useState([]);
+  const [answerDisplay, setiaAnswer] = useState([]);
   const [inputfield, setInputfield] = useState("");
   const [humanQuestion, setHumanQuestion] = useState([]);
   const [loading,setLoading] = useState(false)
@@ -13,17 +13,17 @@ const ContextProvider = (props) => {
 
     let respone = await run(inputfield);
 
-    let previesanswore = iaAnswers;
+    let previesanswore = answerDisplay;
     setiaAnswer([...previesanswore, respone]);
     setLoading(false)
   };
 
   const contextImporting = {
-    iaAnswers,
+    answerDisplay,
     humanQuestion,
     genrateAnswer,
     setInputfield,
-    loading
+    
   };
 
   return (
