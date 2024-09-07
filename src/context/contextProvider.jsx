@@ -3,27 +3,23 @@ import { createContext, useState } from "react";
 export const ContextAPI = createContext();
 
 const ContextProvider = (props) => {
-  const [answerDisplay, setiaAnswer] = useState([]);
+  const [iaAnswer, setiaAnswer] = useState([]);
   const [inputfield, setInputfield] = useState("");
-  const [humanQuestion, setHumanQuestion] = useState([]);
-  const [loading,setLoading] = useState(false)
-  let newarr = []
-  const genrateAnswer = async () => {
-    setLoading(true)
-    newarr.push(inputfield)
-    let respone = await run(inputfield);
-    newarr.push(respone)
 
-    setiaAnswer([answerDisplay,...newarr]);
-    setLoading(false)
+
+  const genrateAnswer = async () => {
+    let newIaAnswer = []
+    newIaAnswer.push(inputfield)
+    let respone = await run(inputfield);
+    newIaAnswer.push(respone);
+    setiaAnswer([iaAnswer,...newIaAnswer]);
+    console.log(iaAnswer);
   };
 
   const contextImporting = {
-    answerDisplay,
-    humanQuestion,
+    iaAnswer,
     genrateAnswer,
     setInputfield,
-    
   };
 
   return (
