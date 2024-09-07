@@ -7,14 +7,14 @@ const ContextProvider = (props) => {
   const [inputfield, setInputfield] = useState("");
   const [humanQuestion, setHumanQuestion] = useState([]);
   const [loading,setLoading] = useState(false)
+  let newarr = []
   const genrateAnswer = async () => {
     setLoading(true)
-    setHumanQuestion([...humanQuestion, inputfield]);
-
+    newarr.push(inputfield)
     let respone = await run(inputfield);
+    newarr.push(respone)
 
-    let previesanswore = answerDisplay;
-    setiaAnswer([...previesanswore, respone]);
+    setiaAnswer([answerDisplay,...newarr]);
     setLoading(false)
   };
 

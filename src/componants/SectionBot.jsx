@@ -26,13 +26,34 @@ export default function SectionBot() {
       ) : (
         <div
           className="chat flex flex-col justify-start gap-2 pb-40 items-start mt-20 mx-52"
-          // Use a unique identifier as the key
         >
-          {
-            
-          }
+          {answerDisplay.map((item, index) => (
+            <div key={index}>
+              <div className="persongpt">
+                  <div className="flex items-center flex-row-reverse justify-center gap-2 border-solid">
+                    {
+                      index % 2 == 0 ? (
+                        <img src={`${chat}`} alt="" />
+                      ) : (
+
+                        <FaUserAlt className="bg-gray-500 rounded-full p-2 text-4xl" />
+                      )
+                    }
+                    <div className="gptrespone bg-[#4F46E5] p-3 rounded-lg text-gray-200 flex gap-2">
+                      <p>{item}</p>
+                      <span className="flex items-center text-[12px] text-white">
+                        <p>{`${hour}:${minutes}`}</p>
+                        <IoCheckmarkDoneOutline className="text-[15px] text-green-400" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          ))}
         </div>
       )}
+      
     </div>
   );
 }
