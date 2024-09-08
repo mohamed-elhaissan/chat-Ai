@@ -4,19 +4,25 @@ export const ContextAPI = createContext();
 
 const ContextProvider = (props) => {
   const [iaAnswer, setiaAnswer] = useState([]);
-  const [inputfield, setInputfield] = useState("");
 
+  const genrateAnswer = async (inputvalue) => {
+    try {
+      let newAnswer = [...iaAnswer,inputvalue];
+      let respone = await run(inputvalue);
+      
+      setiaAnswer([...newAnswer]);
 
-  const genrateAnswer = async () => {
-    
-    let respone = await run(inputfield);
-    console.log(iaAnswer);
+      setiaAnswer([...newAnswer]);
+      console.log(iaAnswer);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const contextImporting = {
     iaAnswer,
     genrateAnswer,
-    setInputfield,
+    
   };
 
   return (
