@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import chat from "../assets/chat.svg";
 import { ContextAPI } from "../context/contextProvider";
 import { FaUserAlt } from "react-icons/fa";
+import gsap from "gsap-trial";
+import { useGSAP } from "@gsap/react";
+
 import "./style.scss";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import under from "../assets/under.svg";
@@ -10,7 +13,24 @@ export default function SectionBot() {
   const hour = newDate.getHours();
   const minutes = newDate.getMinutes();
   const { iaAnswer } = useContext(ContextAPI);
-  
+  const animateLastItem = useRef();
+  useEffect(()=>{
+    if (animateLastItem) {
+      gsap.fromTo(
+        animateLastItem.current,
+        {
+          y: "80%",
+          opacity:0,
+          ease: "power1.in",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "power.in",
+        }
+      );
+    }
+  },[iaAnswer.length])
   return (
     <div>
       {iaAnswer.length === 0 ? (
@@ -24,39 +44,44 @@ export default function SectionBot() {
           <p>Trusted by Millions of Users & Fortune 500 Companies</p>
         </div>
       ) : (
-        <div
-          className="chat flex flex-col justify-start  gap-2 pb-40 items-start mt-20 mx-52"
-        >
+        <div className="chat flex flex-col justify-start  gap-2 pb-40 items-start mt-20 mx-52">
           {iaAnswer.map((item, index) => (
-            <div key={index} className={index % 2 == 0 ? 'self-end' : 'self-start'}>
-              <div  >
-                  <div className="flex items-center    justify-center gap-2 border-solid" style={{
-                    flexDirection : index % 2 == 0 ? 'row-reverse' : 'row'
-                  }}>
-                    {
-                      index % 2 !== 0  ? (
-                        <img src={`${chat}`} alt="" />
-                      ) : (
-
-                        <FaUserAlt className="bg-gray-500 rounded-full p-2 text-4xl" />
-                      )
-                    }
-                    <div className="gptrespone bg-[#4F46E5] p-3 rounded-lg text-gray-200 flex gap-2">
-                      <p>{item}</p>
-                      <p>{index}</p>
-                      <span className="flex items-center text-[12px] text-white">
-                        <p>{`${hour}:${minutes}`}</p>
-                        <IoCheckmarkDoneOutline className="text-[15px] text-green-400" />
-                      </span>
-                    </div>
+            <div
+              key={index}
+              className={index % 2 == 0 ? "self-end" : "self-start"}
+              ref={index == iaAnswer.length - 1 ? animateLastItem : null}
+            >
+              <div>
+                <div
+                  className="flex items-center    justify-center gap-2 border-solid"
+                  style={{
+                    flexDirection: index % 2 == 0 ? "row-reverse" : "row",
+                  }}
+                >
+                  {index % 2 !== 0 ? (
+                    <img src={`${chat}`} alt="" />
+                  ) : (
+                    <FaUserAlt className="bg-gray-500 rounded-full p-2 text-4xl" />
+                  )}
+                  <div
+                    className="gptrespone bg-[#4F46E5] p-3 rounded-lg text-gray-200 flex gap-2"
+                    style={{
+                      background: index % 2 == 0 ? "#4F46E5" : "#fff",
+                      color: index % 2 == 0 ? "#fff" : "#000",
+                    }}
+                  >
+                    <p>{item}</p>
+                    <span className="flex items-center text-[12px] text-white">
+                      <p>{`${hour}:${minutes}`}</p>
+                      <IoCheckmarkDoneOutline className="text-[15px] text-green-400" />
+                    </span>
                   </div>
                 </div>
-                
+              </div>
             </div>
           ))}
         </div>
       )}
-      
     </div>
   );
 }
