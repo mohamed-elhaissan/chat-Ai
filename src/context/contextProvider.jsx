@@ -6,15 +6,16 @@ const ContextProvider = (props) => {
   const [iaAnswer, setiaAnswer] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [currentRespone, setcurrentRespone] = useState([]);
-
+  let newAnswer = []
   const genrateAnswer = async () => {
-    setiaAnswer([...iaAnswer,inputValue])
+    console.log(iaAnswer)
     console.log(iaAnswer);
+    
 
     try {
       const respone = await run(inputValue);
-      setcurrentRespone(respone);
-      console.log(iaAnswer);
+      setiaAnswer([...iaAnswer,inputValue,respone])
+      
     } catch (err) {
       console.log(err);
     }

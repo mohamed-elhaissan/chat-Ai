@@ -5,3 +5,7 @@
   box-sizing: border-box;
   font-family: "Plus Jakarta Sans", sans-serif;
 }
+
+body {
+  background-color: #f0f0f0;
+}
