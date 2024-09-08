@@ -8,11 +8,8 @@ const ContextProvider = (props) => {
 
 
   const genrateAnswer = async () => {
-    let newIaAnswer = []
-    newIaAnswer.push(inputfield)
+    
     let respone = await run(inputfield);
-    newIaAnswer.push(respone);
-    setiaAnswer([iaAnswer,...newIaAnswer]);
     console.log(iaAnswer);
   };
 
