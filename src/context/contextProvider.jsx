@@ -4,15 +4,16 @@ export const ContextAPI = createContext();
 
 const ContextProvider = (props) => {
   const [iaAnswer, setiaAnswer] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [currentRespone, setcurrentRespone] = useState([]);
 
-  const genrateAnswer = async (inputvalue) => {
+  const genrateAnswer = async () => {
+    setiaAnswer([...iaAnswer,inputValue])
+    console.log(iaAnswer);
+
     try {
-      let newAnswer = [...iaAnswer,inputvalue];
-      let respone = await run(inputvalue);
-      
-      setiaAnswer([...newAnswer]);
-
-      setiaAnswer([...newAnswer]);
+      const respone = await run(inputValue);
+      setcurrentRespone(respone);
       console.log(iaAnswer);
     } catch (err) {
       console.log(err);
@@ -22,7 +23,7 @@ const ContextProvider = (props) => {
   const contextImporting = {
     iaAnswer,
     genrateAnswer,
-    
+    setInputValue,
   };
 
   return (

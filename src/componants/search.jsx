@@ -7,10 +7,10 @@ import { ContextAPI } from "../context/contextProvider";
 
 
 export default function Search() {
-    const {genrateAnswer} = useContext(ContextAPI)
+    const {genrateAnswer,setInputValue} = useContext(ContextAPI)
     const input = useRef(null);
     const handleinput = () => {
-        genrateAnswer(input.current.value)
+        genrateAnswer()
         input.current.value = ''
     }
    
@@ -18,7 +18,7 @@ export default function Search() {
         <>
             <div
                 className="searchBox fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-between w-1/2 rounded-lg  bg-white px-5 py-2  ">
-                <input ref={input} 
+                <input ref={input} onChange={(e)=>setInputValue(e.target.value)}
                     type="text"
                     className="w-full bg-transparent outline-none border-none "
                     placeholder="Message to Med-Gpt..."
