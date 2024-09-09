@@ -11,7 +11,7 @@ function App() {
     setLoading(false);
   }, []);
   return (
-    <>
+    <div className="h-full w-full">
       {loading ? (
         <Loading />
       ) : (
@@ -21,7 +21,7 @@ function App() {
           <SectionBot />
         </>
       )}
-    </>
+    </div>
   );
 }
 
