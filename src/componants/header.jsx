@@ -9,9 +9,27 @@ import gsap from "gsap-trial";
 export default function Header() {
   const [showAPI, setShowAPI] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [darkModeActvate,setDarkModeActvate] = useState(false)
+  const [darkModeActvate, setDarkModeActvate] = useState(false);
   const inputFocus = useRef();
   const apifield = useRef();
+  const darkDiv = useRef();
+  useEffect(() => {
+    if (darkModeActvate) {
+      gsap.to(darkDiv.current, {
+        y: "0%",
+        duration: 0.5, // Set a smooth animation duration (adjust as needed)
+        ease: "power3.inOut",
+        borderRadius: "0%",
+      });
+    } else {
+      gsap.to(darkDiv.current, {
+        y: "-100%",
+        duration: 0.5, // Set a smooth animation duration (adjust as needed)
+        ease: "power3.inOut",
+        borderRadius: "0% 0% 50% 50%",
+      });
+    }
+  }, [darkModeActvate]);
   useEffect(() => {
     inputFocus.current.focus();
     gsap.set(apifield.current, {
@@ -38,7 +56,10 @@ export default function Header() {
   }, [showAPI]);
   return (
     <div className="dark">
-      <div className="h-full absolute left-0 top-0 w-full bg-[#131314] -z-30"></div>
+      <div
+        className="h-full absolute left-0 top-0 w-full bg-[#131314] -z-30"
+        ref={darkDiv}
+      ></div>
       <div
         className="top absolute left-0 top-0 bg-black  opacity-50 w-full h-full z-10"
         style={{
@@ -49,24 +70,24 @@ export default function Header() {
         <h1 className="font-bold text-2xl text-black cursor-pointer dark:text-gray-300  ">
           Med-GPT6.7
         </h1>
-        <div
-          className="flex items-center  px-3 py-2 rounded-full text-sm  "
-          style={{
-            boxShadow: "rgba(112, 144, 176, 0.18) 14px 17px 40px 4px",
-          }}
-        >
+        <div className="flex items-center shadow-xl dark:bg-[#2E2A36]  px-3 py-2 rounded-full text-sm  ">
           <input
             type="text"
             className="bg-[#F4F7FE] rounded-full px-4 py-2 outline-none"
             placeholder="Search...."
           />
           <IoIosLock
-            className="text-2xl text-blue-600  cursor-pointer"
+            className="text-2xl text-blue-600 ml-4 cursor-pointer"
             onClick={() => {
               setShowAPI(!showAPI);
             }}
           />
-          <CiDark className="text-2xl mx-2 dark:text-blue-600 cursor-pointer" />
+          <CiDark
+            onClick={() => {
+              setDarkModeActvate(!darkModeActvate);
+            }}
+            className="text-2xl mx-2 dark:text-blue-600 cursor-pointer"
+          />
           <IoPersonCircleOutline className="text-3xl  dark:text-blue-600 cursor-pointer" />
         </div>
       </div>
