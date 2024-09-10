@@ -5,7 +5,7 @@ import { ContextAPI } from "../context/contextProvider";
 import em1 from '../assets/em1.svg'
 import em2 from '../assets/em2.svg'
 import em3 from '../assets/em3.svg'
-
+import { darkMode } from "../context/darkModeprovider";
 export default function Search() {
     const [handleinputValue,setHandleInputValue] = useState(true)
     const {genrateAnswer,setInputValue} = useContext(ContextAPI)
@@ -14,9 +14,11 @@ export default function Search() {
         genrateAnswer()
         input.current.value = ''
     }
+    
+  const {isDarkmodeActvated} = useContext(darkMode)
    
     return (
-        <div className="dark">
+        <div className={isDarkmodeActvated ? 'dark' : 'light'}>
             <div
                 className="searchBox fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-between w-1/2 rounded-lg  bg-white dark:bg-[#27272A] px-5 py-2  ">
                 <img src={em3} className="mr-2 cursor-pointer" alt=""/>

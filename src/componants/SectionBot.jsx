@@ -3,8 +3,7 @@ import chat from "../assets/chat.svg";
 import { ContextAPI } from "../context/contextProvider";
 import { FaUserAlt } from "react-icons/fa";
 import gsap from "gsap-trial";
-import { useGSAP } from "@gsap/react";
-
+import { darkMode } from "../context/darkModeprovider";
 import "./style.scss";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import under from "../assets/under.svg";
@@ -14,13 +13,15 @@ export default function SectionBot() {
   const minutes = newDate.getMinutes();
   const { iaAnswer } = useContext(ContextAPI);
   const animateLastItem = useRef();
-  useEffect(()=>{
+
+  const {isDarkmodeActvated } = useContext(darkMode);
+  useEffect(() => {
     if (animateLastItem) {
       gsap.fromTo(
         animateLastItem.current,
         {
           y: "80%",
-          opacity:0,
+          opacity: 0,
           ease: "power1.in",
         },
         {
@@ -30,18 +31,22 @@ export default function SectionBot() {
         }
       );
     }
-  },[iaAnswer.length])
+  }, [iaAnswer.length]);
   return (
-    <div className="dark">
+    <div className={isDarkmodeActvated ? 'dark' : 'light'}>
       {iaAnswer.length === 0 ? (
         <div className="welocome text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h2 className="text-5xl font-bold dark:text-gray-200">Ask Med-GPT AI Anything</h2>
+          <h2 className="text-5xl font-bold dark:text-gray-200">
+            Ask Med-GPT AI Anything
+          </h2>
           <img
             src={`${under}`}
             alt=""
             className="relative left-1/2 -translate-x-1/2 -mt-4"
           />
-          <p className="dark:text-gray-200">Trusted by Millions of Users & Fortune 500 Companies</p>
+          <p className="dark:text-gray-200">
+            Trusted by Millions of Users & Fortune 500 Companies
+          </p>
         </div>
       ) : (
         <div className="chat flex flex-col justify-start  gap-2 pb-40 items-start mt-20 mx-52">

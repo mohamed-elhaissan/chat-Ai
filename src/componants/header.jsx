@@ -1,35 +1,37 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { CiDark } from "react-icons/ci";
 import { IoIosLock } from "react-icons/io";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
 import gsap from "gsap-trial";
+import { darkMode } from "../context/darkModeprovider";
+import { MdLightMode } from "react-icons/md";
 
 export default function Header() {
   const [showAPI, setShowAPI] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [darkModeActvate, setDarkModeActvate] = useState(false);
   const inputFocus = useRef();
   const apifield = useRef();
   const darkDiv = useRef();
+  const {setIsDarkModeACtvated,isDarkmodeActvated} = useContext(darkMode)
   useEffect(() => {
-    if (darkModeActvate) {
+    if (isDarkmodeActvated) {
       gsap.to(darkDiv.current, {
         y: "0%",
-        duration: 0.5, // Set a smooth animation duration (adjust as needed)
+        duration: 0.5, 
         ease: "power3.inOut",
         borderRadius: "0%",
       });
     } else {
       gsap.to(darkDiv.current, {
         y: "-100%",
-        duration: 0.5, // Set a smooth animation duration (adjust as needed)
+        duration: 0.5, 
         ease: "power3.inOut",
         borderRadius: "0% 0% 50% 50%",
       });
     }
-  }, [darkModeActvate]);
+  }, [isDarkmodeActvated]);
   useEffect(() => {
     inputFocus.current.focus();
     gsap.set(apifield.current, {
@@ -55,7 +57,7 @@ export default function Header() {
     }
   }, [showAPI]);
   return (
-    <div className="dark">
+    <div className={isDarkmodeActvated ? 'dark' : 'light'}>
       <div
         className="h-full absolute left-0 top-0 w-full bg-[#18181A] -z-30"
         ref={darkDiv}
@@ -82,12 +84,23 @@ export default function Header() {
               setShowAPI(!showAPI);
             }}
           />
-          <CiDark
+          {!isDarkmodeActvated ? (
+            <CiDark
             onClick={() => {
-              setDarkModeActvate(!darkModeActvate);
+              setIsDarkModeACtvated(!isDarkmodeActvated)
             }}
             className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
           />
+        ): (
+            <MdLightMode
+            onClick={() => {
+              setIsDarkModeACtvated(!isDarkmodeActvated)
+            }}
+            className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
+          />
+
+          )
+          }
           <IoPersonCircleOutline className="text-3xl  dark:text-[#FAFAFA] cursor-pointer" />
         </div>
       </div>

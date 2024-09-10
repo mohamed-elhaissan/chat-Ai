@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./componants/header.jsx";
 import Search from "./componants/search.jsx";
@@ -18,7 +18,7 @@ function App() {
         <>
           <Header />
           <Search />
-          <SectionBot />
+          <SectionBot  />
         </>
       )}
     </div>
