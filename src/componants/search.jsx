@@ -16,10 +16,10 @@ export default function Search() {
     }
    
     return (
-        <>
+        <div className="dark">
             <div
-                className="searchBox fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-between w-1/2 rounded-lg  bg-white px-5 py-2  ">
-                <img src={em3} className="mr-2" alt=""/>
+                className="searchBox fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center justify-between w-1/2 rounded-lg  bg-white dark:bg-[#27272A] px-5 py-2  ">
+                <img src={em3} className="mr-2 cursor-pointer" alt=""/>
                 <input ref={input} onChange={(e)=>{
                     const inputValue = e.target.value
                     if (inputValue.length != 0 ) {
@@ -42,6 +42,6 @@ export default function Search() {
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

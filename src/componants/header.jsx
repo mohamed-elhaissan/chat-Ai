@@ -57,7 +57,7 @@ export default function Header() {
   return (
     <div className="dark">
       <div
-        className="h-full absolute left-0 top-0 w-full bg-[#131314] -z-30"
+        className="h-full absolute left-0 top-0 w-full bg-[#18181A] -z-30"
         ref={darkDiv}
       ></div>
       <div
@@ -70,14 +70,14 @@ export default function Header() {
         <h1 className="font-bold text-2xl text-black cursor-pointer dark:text-gray-300  ">
           Med-GPT6.7
         </h1>
-        <div className="flex items-center shadow-xl dark:bg-[#2E2A36]  px-3 py-2 rounded-full text-sm  ">
+        <div className="flex items-center shadow-xl dark:bg-[#27272A]  px-3 py-2 rounded-full text-sm  ">
           <input
             type="text"
-            className="bg-[#F4F7FE] rounded-full px-4 py-2 outline-none"
+            className="bg-[#F4F7FE] dark:bg-[#27272A] rounded-full px-4 py-2 outline-none"
             placeholder="Search...."
           />
           <IoIosLock
-            className="text-2xl text-blue-600 ml-4 cursor-pointer"
+            className="text-2xl dark:text-[#FAFAFA] ml-4 cursor-pointer"
             onClick={() => {
               setShowAPI(!showAPI);
             }}
@@ -86,9 +86,9 @@ export default function Header() {
             onClick={() => {
               setDarkModeActvate(!darkModeActvate);
             }}
-            className="text-2xl mx-2 dark:text-blue-600 cursor-pointer"
+            className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
           />
-          <IoPersonCircleOutline className="text-3xl  dark:text-blue-600 cursor-pointer" />
+          <IoPersonCircleOutline className="text-3xl  dark:text-[#FAFAFA] cursor-pointer" />
         </div>
       </div>
       <div
