@@ -14,7 +14,7 @@ export default function SectionBot() {
   const { iaAnswer } = useContext(ContextAPI);
   const animateLastItem = useRef();
 
-  const {isDarkmodeActvated } = useContext(darkMode);
+  const { isDarkmodeActvated } = useContext(darkMode);
   useEffect(() => {
     if (animateLastItem) {
       gsap.fromTo(
@@ -33,7 +33,7 @@ export default function SectionBot() {
     }
   }, [iaAnswer.length]);
   return (
-    <div className={isDarkmodeActvated ? 'dark' : 'light'}>
+    <div className={isDarkmodeActvated ? "dark" : "light"}>
       {iaAnswer.length === 0 ? (
         <div className="welocome text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h2 className="text-5xl font-bold dark:text-gray-200">

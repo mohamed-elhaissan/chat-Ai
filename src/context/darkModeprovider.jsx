@@ -12,8 +12,5 @@ const DarkModeProvider = ({ children }) => {
     </darkMode.Provider>
   );
 };
-DarkModeProvider.propTypes = {
-  name: PropTypes.string.isRequired,
-};
 
 export default DarkModeProvider;

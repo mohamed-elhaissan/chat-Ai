@@ -14,21 +14,19 @@ export default function Header() {
   const inputFocus = useRef();
   const apifield = useRef();
   const darkDiv = useRef();
-  const {setIsDarkModeACtvated,isDarkmodeActvated} = useContext(darkMode)
+  const { setIsDarkModeACtvated, isDarkmodeActvated } = useContext(darkMode);
   useEffect(() => {
     if (isDarkmodeActvated) {
       gsap.to(darkDiv.current, {
-        y: "0%",
-        duration: 0.5, 
-        ease: "power3.inOut",
-        borderRadius: "0%",
+        duration: 0.6,
+        scale: 50,
+        ease: "expoScale(1,2,power2.inOut)",
       });
     } else {
       gsap.to(darkDiv.current, {
-        y: "-100%",
-        duration: 0.5, 
-        ease: "power3.inOut",
-        borderRadius: "0% 0% 50% 50%",
+        duration: 0.6,
+        scale: 0,
+        ease: "expoScale(1,2,power2.inOut)",
       });
     }
   }, [isDarkmodeActvated]);
@@ -44,7 +42,6 @@ export default function Header() {
         scale: 1,
         y: 0,
         duration: 0.5,
-        ease: "back",
       });
     } else {
       gsap.to(apifield.current, {
@@ -52,14 +49,14 @@ export default function Header() {
         y: -100,
         duration: 0.5,
         scale: 0,
-        ease: "back",
       });
     }
   }, [showAPI]);
+
   return (
-    <div className={isDarkmodeActvated ? 'dark' : 'light'}>
+    <div className={isDarkmodeActvated ? "dark" : "light"}>
       <div
-        className="h-full absolute left-0 top-0 w-full bg-[#18181A] -z-30"
+        className="h-[100px] w-[100px] fixed  -left-10 -top-10  rounded-full  bg-[#18181A] -z-30"
         ref={darkDiv}
       ></div>
       <div
@@ -86,21 +83,19 @@ export default function Header() {
           />
           {!isDarkmodeActvated ? (
             <CiDark
-            onClick={() => {
-              setIsDarkModeACtvated(!isDarkmodeActvated)
-            }}
-            className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
-          />
-        ): (
+              onClick={() => {
+                setIsDarkModeACtvated(!isDarkmodeActvated);
+              }}
+              className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
+            />
+          ) : (
             <MdLightMode
-            onClick={() => {
-              setIsDarkModeACtvated(!isDarkmodeActvated)
-            }}
-            className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
-          />
-
-          )
-          }
+              onClick={() => {
+                setIsDarkModeACtvated(!isDarkmodeActvated);
+              }}
+              className="text-2xl mx-2 dark:text-[#FAFAFA] cursor-pointer"
+            />
+          )}
           <IoPersonCircleOutline className="text-3xl  dark:text-[#FAFAFA] cursor-pointer" />
         </div>
       </div>
