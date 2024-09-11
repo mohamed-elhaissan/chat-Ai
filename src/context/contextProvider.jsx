@@ -5,7 +5,6 @@ export const ContextAPI = createContext();
 const ContextProvider = (props) => {
   const [iaAnswer, setiaAnswer] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [currentRespone, setcurrentRespone] = useState([]);
 
   const genrateAnswer = async () => {
     console.log(iaAnswer)

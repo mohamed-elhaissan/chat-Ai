@@ -1,62 +1,27 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./style.scss";
 import { CiDark } from "react-icons/ci";
 import { IoIosLock } from "react-icons/io";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
-import gsap from "gsap-trial";
 import { darkMode } from "../context/darkModeprovider";
 import { MdLightMode } from "react-icons/md";
 
 export default function Header() {
   const [showAPI, setShowAPI] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const inputFocus = useRef();
-  const apifield = useRef();
   const darkDiv = useRef();
   const { setIsDarkModeACtvated, isDarkmodeActvated } = useContext(darkMode);
-  useEffect(() => {
-    if (isDarkmodeActvated) {
-      gsap.to(darkDiv.current, {
-        duration: 0.6,
-        scale: 50,
-        ease: "expoScale(1,2,power2.inOut)",
-      });
-    } else {
-      gsap.to(darkDiv.current, {
-        duration: 0.6,
-        scale: 0,
-        ease: "expoScale(1,2,power2.inOut)",
-      });
-    }
-  }, [isDarkmodeActvated]);
-  useEffect(() => {
-    inputFocus.current.focus();
-    gsap.set(apifield.current, {
-      opacity: 0,
-      scale: 0,
-    });
-    if (showAPI) {
-      gsap.to(apifield.current, {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.5,
-      });
-    } else {
-      gsap.to(apifield.current, {
-        opacity: 0,
-        y: -100,
-        duration: 0.5,
-        scale: 0,
-      });
-    }
-  }, [showAPI]);
 
   return (
     <div className={isDarkmodeActvated ? "dark" : "light"}>
       <div
-        className="h-[100px] w-[100px] fixed  -left-10 -top-10  rounded-full  bg-[#18181A] -z-30"
+        className="h-full w-full  fixed   left-0 top-0  opacity-0   bg-[#18181A] -z-30"
+        style={{
+          transition: "all 2s cubic-bezier(0.16, 1, 0.3, 1)",
+          top: isDarkmodeActvated ? "0%" : "-100%",
+          opacity: isDarkmodeActvated ? "1" : "0",
+        }}
         ref={darkDiv}
       ></div>
       <div
@@ -100,8 +65,13 @@ export default function Header() {
         </div>
       </div>
       <div
-        className="absolute top-40  z-20 bg-white p-5 left-1/2 -translate-x-1/2 rounded-lg shadow-lg -translate-y-1/2"
-        ref={apifield}
+        className="absolute top-40  z-20 bg-white p-5 left-1/2  -translate-x-1/2 rounded-lg shadow-lg "
+        style={{
+          transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)",
+          opacity : showAPI ? 1 : 0,
+          scale : showAPI ? '1' : '0',
+          right : showAPI ? '20%' : '-10%'
+        }}
       >
         <span className="flex items-center justify-end">
           <IoCloseOutline
@@ -111,21 +81,18 @@ export default function Header() {
             }}
           />
         </span>
-        <h2 className="text-2xl text-center mb-5 mt-5 text-[#1B254] font-semibold">
+        <h2 className="text-2xl text-center  mb-5 mt-5 text-[#1B254] font-semibold">
           Enter your OpenAI API Key
         </h2>
         <div>
           <input
-            ref={inputFocus}
             type="text"
-            className="bg-[#F4F7FE] rounded-lg mx-2 w-80 focus:outline-green-500   px-4 py-2 outline-none"
-            style={{
-              border: showAlert ? "1px solid red" : "none",
-            }}
+            className="bg-[#F4F7FE] rounded-lg mx-2 w-80 focus:outline-black   px-4 py-2 outline-none"
+            
             placeholder="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
           />
           <button
-            className="bg-[#48BB78] text-white py-2 px-3 rounded-lg"
+            className="bg-black text-white py-2 px-3 rounded-lg"
             onClick={() => {
               setShowAlert(!showAlert);
               setTimeout(() => {

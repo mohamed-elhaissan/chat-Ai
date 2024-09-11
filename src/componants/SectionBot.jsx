@@ -12,26 +12,9 @@ export default function SectionBot() {
   const hour = newDate.getHours();
   const minutes = newDate.getMinutes();
   const { iaAnswer } = useContext(ContextAPI);
-  const animateLastItem = useRef();
+  const messageRef = useRef();
 
   const { isDarkmodeActvated } = useContext(darkMode);
-  useEffect(() => {
-    if (animateLastItem) {
-      gsap.fromTo(
-        animateLastItem.current,
-        {
-          y: "80%",
-          opacity: 0,
-          ease: "power1.in",
-        },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "power.in",
-        }
-      );
-    }
-  }, [iaAnswer.length]);
   return (
     <div className={isDarkmodeActvated ? "dark" : "light"}>
       {iaAnswer.length === 0 ? (
@@ -54,7 +37,7 @@ export default function SectionBot() {
             <div
               key={index}
               className={index % 2 == 0 ? "self-end" : "self-start"}
-              ref={index == iaAnswer.length - 1 ? animateLastItem : null}
+              ref={index == iaAnswer.length - 1 ? messageRef : null}
             >
               <div>
                 <div
