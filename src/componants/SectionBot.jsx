@@ -2,10 +2,10 @@ import { useContext, useEffect, useRef } from "react";
 import chat from "../assets/chat.svg";
 import { ContextAPI } from "../context/contextProvider";
 import { FaUserAlt } from "react-icons/fa";
-import gsap from "gsap-trial";
 import { darkMode } from "../context/darkModeprovider";
 import "./style.scss";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import gsap from "gsap-trial";
 import under from "../assets/under.svg";
 export default function SectionBot() {
   const newDate = new Date();
@@ -13,6 +13,14 @@ export default function SectionBot() {
   const minutes = newDate.getMinutes();
   const { iaAnswer } = useContext(ContextAPI);
   const messageRef = useRef();
+  useEffect(() => {
+    if (messageRef) {
+      gsap.to(messageRef.current,{
+        y : 0,
+        opacity : 1,
+      })
+    }
+  }, [iaAnswer]);
 
   const { isDarkmodeActvated } = useContext(darkMode);
   return (
@@ -36,7 +44,10 @@ export default function SectionBot() {
           {iaAnswer.map((item, index) => (
             <div
               key={index}
-              className={index % 2 == 0 ? "self-end" : "self-start"}
+              className={index % 2 == 0 ? "self-end   relative translate-y-4 opacity-0 " : "self-start  relative translate-y-4 opacity-0 "}
+              style={{
+                transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
               ref={index == iaAnswer.length - 1 ? messageRef : null}
             >
               <div>
