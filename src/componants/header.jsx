@@ -41,7 +41,7 @@ export default function Header() {
             placeholder="Search...."
           />
           <IoIosLock
-            className="text-2xl dark:text-[#FAFAFA] ml-4 cursor-pointer"
+            className="text-2xl dark:text-[#FAFAFA] ml-4  cursor-pointer"
             onClick={() => {
               setShowAPI(!showAPI);
             }}

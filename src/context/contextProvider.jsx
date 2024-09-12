@@ -7,14 +7,17 @@ const ContextProvider = (props) => {
   const [inputValue, setInputValue] = useState("");
 
   const genrateAnswer = async () => {
-    console.log(iaAnswer)
-    console.log(iaAnswer);
-    
-    setiaAnswer([...iaAnswer,inputValue])
+
+    setiaAnswer([...iaAnswer, inputValue]);
     try {
       const respone = await run(inputValue);
-      setiaAnswer([...iaAnswer,inputValue,respone])
       
+      let myword = respone.split('**')    
+      myword.map((item,index)=>{
+        index % 2 == 0 ? '<h2>item</h2>' : item
+      })  
+      
+      setiaAnswer([...iaAnswer, inputValue, myword]);
     } catch (err) {
       console.log(err);
     }
