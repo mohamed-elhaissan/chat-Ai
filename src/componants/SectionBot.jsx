@@ -26,8 +26,8 @@ export default function SectionBot() {
   return (
     <div className={isDarkmodeActvated ? "dark" : "light"}>
       {iaAnswer.length === 0 ? (
-        <div className="welocome text-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h2 className="text-5xl font-bold dark:text-gray-200">
+        <div className="welocome text-center absolute left-1/2 top-1/2 -translate-x-1/2 sm:w-full -translate-y-1/2">
+          <h2 className="text-5xl font-bold sm:w-full dark:text-gray-200">
             Ask Med-GPT AI Anything
           </h2>
           <img
@@ -35,12 +35,12 @@ export default function SectionBot() {
             alt=""
             className="relative left-1/2 -translate-x-1/2 -mt-4"
           />
-          <p className="dark:text-gray-200">
+          <p className="dark:text-gray-200 sm:text-sm">
             Trusted by Millions of Users & Fortune 500 Companies
           </p>
         </div>
       ) : (
-        <div className="chat flex flex-col justify-start  gap-2 pb-40 items-start mt-20 mx-52">
+        <div className="chat flex flex-col justify-start sm:w-full xl:px-52  gap-2 pb-40 items-start mt-20 lg:px-5">
           {iaAnswer.map((item, index) => (
             <div
               key={index}

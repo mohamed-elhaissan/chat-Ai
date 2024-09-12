@@ -31,13 +31,13 @@ export default function Header() {
         }}
       ></div>
       <div className="flex justify-between items-center text-lg px-10 my-1">
-        <h1 className="font-bold text-2xl text-black cursor-pointer dark:text-gray-300  ">
+        <h1 className="font-bold text-2xl text-black cursor-pointer sm:text-md dark:text-gray-300  ">
           Med-GPT6.7
         </h1>
         <div className="flex items-center shadow-xl dark:bg-[#27272A]  px-3 py-2 rounded-full text-sm  ">
           <input
             type="text"
-            className="bg-[#F4F7FE] dark:bg-[#27272A] rounded-full px-4 py-2 outline-none"
+            className="bg-[#F4F7FE] sm:hidden lg:block dark:bg-[#27272A] rounded-full px-4 py-2 outline-none"
             placeholder="Search...."
           />
           <IoIosLock
@@ -65,7 +65,7 @@ export default function Header() {
         </div>
       </div>
       <div
-        className="absolute top-40  z-20 bg-white p-5 left-1/2  -translate-x-1/2 rounded-lg shadow-lg "
+        className="absolute sm:w-full md:w-[80%] lg:w-[500px] top-40  z-20 bg-white p-5 left-1/2  -translate-x-1/2 rounded-lg shadow-lg "
         style={{
           transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)",
           opacity : showAPI ? 1 : 0,
